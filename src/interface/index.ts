@@ -16,4 +16,5 @@ export interface BoardNodeComponet {
     isFinish: boolean;
     isWall: boolean;
     mouseIsPressed: boolean;
+    handleMouseEnter: (row:number, col:number) => void,
 }

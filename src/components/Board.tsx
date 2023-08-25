@@ -40,6 +40,22 @@ const Board: React.FC = () => {
         };
     };
 
+    const getNewGridWithWallToggled = (
+        grid: BoardNode[][],
+        row: number,
+        col: number
+    ): BoardNode[][] => {
+        const newGrid = grid.slice();
+        const node = newGrid[row][col];
+        const newNode = { ...node, isWall: !node.isWall };
+        newGrid[row][col] = newNode;
+        return newGrid;
+    };
+
+    const handleMouseEnter = (row: number, col: number): void => {
+        setGrid(getNewGridWithWallToggled(grid, row, col));
+    };
+
     useEffect(() => {
         setGrid(getInitialGrid());
     }, []);
@@ -57,6 +73,7 @@ const Board: React.FC = () => {
                             isStart={node.isStart}
                             isWall={node.isWall}
                             mouseIsPressed={mouseIsPressed}
+                            handleMouseEnter={handleMouseEnter}
                         />
                     ))}
                 </div>
