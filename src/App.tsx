@@ -4,7 +4,9 @@ import "./styles/main.scss";
 const App: React.FC = () => {
     return (
         <>
-            <Board />
+            <main>
+                <Board />
+            </main>
         </>
     );
 };

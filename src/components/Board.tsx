@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
+import { BoardNode } from "../interface";
+import Node from "./Node";
 
 const START_NODE_ROW = 10;
 const START_NODE_COL = 15;
 const FINISH_NODE_ROW = 10;
 const FINISH_NODE_COL = 35;
-
-interface BoardNode {
-    col: number;
-    row: number;
-    isStart: boolean;
-    isFinish: boolean;
-    distance: number;
-    isVisited: boolean;
-    isWall: boolean;
-    previousNode: any;
-}
 
 const Board: React.FC = () => {
     const [grid, setGrid] = useState<BoardNode[][]>([]);
@@ -53,7 +44,25 @@ const Board: React.FC = () => {
         setGrid(getInitialGrid());
     }, []);
 
-    return <div>board</div>;
+    return (
+        <section className="grid">
+            {grid.map((row, rowIdx) => (
+                <div className="col" key={rowIdx}>
+                    {row.map((node, nodeIdx) => (
+                        <Node
+                            key={nodeIdx}
+                            col={node.col}
+                            row={node.row}
+                            isFinish={node.isFinish}
+                            isStart={node.isStart}
+                            isWall={node.isWall}
+                            mouseIsPressed={mouseIsPressed}
+                        />
+                    ))}
+                </div>
+            ))}
+        </section>
+    );
 };
 
 export default Board;
