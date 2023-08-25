@@ -1,7 +1,14 @@
+import Board from "./components/Board";
 import "./styles/main.scss";
 
-const App = () => {
-    return <h1>hello world</h1>;
+const App: React.FC = () => {
+    return (
+        <>
+            <main>
+                <Board />
+            </main>
+        </>
+    );
 };
 
 export default App;
