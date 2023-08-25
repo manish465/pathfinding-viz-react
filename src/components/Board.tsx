@@ -10,22 +10,6 @@ const FINISH_NODE_COL = 35;
 const Board: React.FC = () => {
     const [grid, setGrid] = useState<BoardNode[][]>([]);
 
-    const getInitialGrid = (): BoardNode[][] => {
-        const grid: BoardNode[][] = [];
-
-        for (let row = 0; row < 20; row++) {
-            const currentRow: BoardNode[] = [];
-
-            for (let col = 0; col < 50; col++) {
-                currentRow.push(createNode(col, row));
-            }
-
-            grid.push(currentRow);
-        }
-
-        return grid;
-    };
-
     const createNode = (col: number, row: number): BoardNode => {
         return {
             col,
@@ -56,6 +40,22 @@ const Board: React.FC = () => {
     };
 
     useEffect(() => {
+        const getInitialGrid = (): BoardNode[][] => {
+            const grid: BoardNode[][] = [];
+
+            for (let row = 0; row < 20; row++) {
+                const currentRow: BoardNode[] = [];
+
+                for (let col = 0; col < 50; col++) {
+                    currentRow.push(createNode(col, row));
+                }
+
+                grid.push(currentRow);
+            }
+
+            return grid;
+        };
+
         setGrid(getInitialGrid());
     }, []);
 
