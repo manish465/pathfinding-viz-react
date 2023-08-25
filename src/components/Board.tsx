@@ -9,7 +9,6 @@ const FINISH_NODE_COL = 35;
 
 const Board: React.FC = () => {
     const [grid, setGrid] = useState<BoardNode[][]>([]);
-    const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
 
     const getInitialGrid = (): BoardNode[][] => {
         const grid: BoardNode[][] = [];
@@ -72,7 +71,6 @@ const Board: React.FC = () => {
                             isFinish={node.isFinish}
                             isStart={node.isStart}
                             isWall={node.isWall}
-                            mouseIsPressed={mouseIsPressed}
                             handleMouseEnter={handleMouseEnter}
                         />
                     ))}
