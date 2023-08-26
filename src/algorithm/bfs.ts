@@ -1,24 +1,23 @@
+import { delay } from "../entites/regular";
 import { NodeInterface, PosInterface } from "../utils/specs";
 
-export const bfs = (
+export const bfs = async (
     grid: NodeInterface[][],
     start: NodeInterface,
     finish: NodeInterface,
     action: (pos: PosInterface) => void
-): boolean => {
+): Promise<boolean> => {
     const queue: NodeInterface[] = [];
 
     queue.push(start);
 
-    const width = grid.length;
-    const height = grid[0].length;
-
     while (queue.length > 0) {
         const current = queue.shift();
-        if (current === undefined) break;
+        if (current === undefined) return false;
 
-        action(current.pos);
+        await delay(50);
         current.attr.isSearched = true;
+        action(current.pos);
 
         if (current === finish) {
             return true;

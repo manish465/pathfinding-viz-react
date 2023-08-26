@@ -6,7 +6,7 @@ export class BoardClass {
     private height: number;
     private nodeStartRow: number = 0;
     private nodeStartCol: number = 0;
-    private nodeFinishRow: number = 4;
+    private nodeFinishRow: number = 1;
     private nodeFinishCol: number = 4;
 
     public constructor(width: number, height: number) {
