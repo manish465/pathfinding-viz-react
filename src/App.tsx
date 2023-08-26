@@ -1,5 +1,5 @@
 import Board from "./components/Board";
-import "./styles/main.scss";
+import "./styles/index.scss";
 
 const App: React.FC = () => {
     return (

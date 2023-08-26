@@ -1,28 +1,19 @@
-import { BoardNodeComponet } from "../interface";
+import { NodeInterface } from "../utils/specs";
 
-const Node: React.FC<BoardNodeComponet> = ({
-    col,
-    row,
-    isStart,
-    isFinish,
-    isWall,
-    handleMouseEnter,
-}) => {
-    const extraClassName = isFinish
-        ? "finish"
-        : isStart
-        ? "start"
-        : isWall
-        ? "wall"
-        : "";
+const Node: React.FC<NodeInterface> = ({ pos, attr }) => {
+    const nodeClass = (): string => {
+        const classPrefix = "node";
 
-    return (
-        <div
-            id={`node-${row}-${col}`}
-            className={`node ${extraClassName}`}
-            onMouseEnter={() => handleMouseEnter(row, col)}
-        />
-    );
+        if (attr.isStart) return classPrefix + " start";
+        if (attr.isFinish) return classPrefix + " finish";
+        if (attr.isSearched && (!attr.isStart || !attr.isFinish))
+            return classPrefix + " searched";
+        return classPrefix;
+    };
+
+    const classList = nodeClass();
+
+    return <div id={`node-${pos.row}-${pos.col}`} className={classList}></div>;
 };
 
 export default Node;
