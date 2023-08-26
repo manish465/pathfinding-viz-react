@@ -21,6 +21,11 @@
                 border-color: red;
                 background-color: red;
             }
+
+            &.node-shortest-path {
+                border-color: blue;
+                background-color: blue;
+            }
         }
     }
 }
