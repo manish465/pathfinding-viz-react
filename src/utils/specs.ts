@@ -1,8 +1,14 @@
 interface PosInterface {
-    x: number;
-    y: number;
+    row: number;
+    col: number;
+}
+
+interface Attribute {
+    isStart: boolean;
+    isFinish: boolean;
 }
 
 export interface NodeInterface {
     pos: PosInterface;
+    attr: Attribute;
 }

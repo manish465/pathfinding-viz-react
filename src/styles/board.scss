@@ -1,0 +1,21 @@
+.board {
+    display: flex;
+    .row {
+        .node {
+            width: 20px;
+            height: 20px;
+            border: 2px solid saddlebrown;
+            margin: 2px;
+
+            &.start {
+                border-color: wheat;
+                background-color: wheat;
+            }
+
+            &.finish {
+                border-color: aqua;
+                background-color: aqua;
+            }
+        }
+    }
+}
