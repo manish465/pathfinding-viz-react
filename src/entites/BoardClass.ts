@@ -1,12 +1,13 @@
-import { NodeInterface } from "../utils/specs";
+import { bfs } from "../algorithm/bfs";
+import { NodeInterface, PosInterface } from "../utils/specs";
 
 export class BoardClass {
     private width: number;
     private height: number;
     private nodeStartRow: number = 0;
     private nodeStartCol: number = 0;
-    private nodeFinishRow: number = 19;
-    private nodeFinishCol: number = 19;
+    private nodeFinishRow: number = 4;
+    private nodeFinishCol: number = 4;
 
     public constructor(width: number, height: number) {
         this.width = width;
@@ -20,6 +21,7 @@ export class BoardClass {
                 isStart: row === this.nodeStartRow && col === this.nodeStartCol,
                 isFinish:
                     row === this.nodeFinishRow && col === this.nodeFinishCol,
+                isSearched: false,
             },
         };
     };
@@ -38,5 +40,15 @@ export class BoardClass {
         }
 
         return board;
+    };
+
+    public search = (
+        board: NodeInterface[][],
+        action: (pos: PosInterface) => void
+    ): void => {
+        const startNode = board[this.nodeStartRow][this.nodeStartCol];
+        const finishNode = board[this.nodeFinishRow][this.nodeFinishCol];
+
+        console.log(bfs(board, startNode, finishNode, action));
     };
 }

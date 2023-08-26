@@ -6,6 +6,7 @@ const Node: React.FC<NodeInterface> = ({ pos, attr }) => {
 
         if (attr.isStart) return classPrefix + " start";
         if (attr.isFinish) return classPrefix + " finish";
+        if (attr.isSearched) return classPrefix + " searched";
         return classPrefix;
     };
 

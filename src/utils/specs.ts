@@ -1,4 +1,4 @@
-interface PosInterface {
+export interface PosInterface {
     row: number;
     col: number;
 }
@@ -6,6 +6,7 @@ interface PosInterface {
 interface Attribute {
     isStart: boolean;
     isFinish: boolean;
+    isSearched: boolean;
 }
 
 export interface NodeInterface {

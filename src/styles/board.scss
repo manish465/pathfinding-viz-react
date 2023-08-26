@@ -8,13 +8,15 @@
             margin: 2px;
 
             &.start {
-                border-color: wheat;
                 background-color: wheat;
             }
 
             &.finish {
-                border-color: aqua;
                 background-color: aqua;
+            }
+
+            &.searched {
+                background-color: gray;
             }
         }
     }
