@@ -1,4 +1,4 @@
-import { delay } from "../entites/regular";
+import { sleep } from "../utils/regular";
 import { NodeInterface, PosInterface } from "../utils/specs";
 
 export const bfs = async (
@@ -8,28 +8,28 @@ export const bfs = async (
     action: (pos: PosInterface) => void
 ): Promise<boolean> => {
     const queue: NodeInterface[] = [];
-
     queue.push(start);
 
     while (queue.length > 0) {
-        const current = queue.shift();
-        if (current === undefined) return false;
+        await sleep(20).then(() => {
+            const current = queue.shift();
+            if (current === undefined) return false;
 
-        await delay(50);
-        current.attr.isSearched = true;
-        action(current.pos);
+            current.attr.isSearched = true;
+            action(current.pos);
 
-        if (current === finish) {
-            return true;
-        }
-        const neighbors = getUnvisitedNeighbors(current, grid);
+            if (current === finish) {
+                return true;
+            }
 
-        for (const neighbor of neighbors) {
-            queue.push(neighbor);
-        }
+            const neighbors = getUnvisitedNeighbors(current, grid);
+
+            for (const neighbor of neighbors) {
+                queue.push(neighbor);
+            }
+        });
     }
 
-    console.log("could not find the node");
     return false;
 };
 

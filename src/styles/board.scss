@@ -7,16 +7,16 @@
             border: 2px solid saddlebrown;
             margin: 2px;
 
+            &.searched {
+                background-color: rgba(196, 196, 196, 0.7);
+            }
+
             &.start {
                 background-color: wheat;
             }
 
             &.finish {
                 background-color: aqua;
-            }
-
-            &.searched {
-                background-color: rgba(196, 196, 196, 0.4);
             }
         }
     }

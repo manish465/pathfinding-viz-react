@@ -4,7 +4,7 @@ import { BoardClass } from "../entites/BoardClass";
 import Node from "./Node";
 
 const Board = () => {
-    const boardObject = new BoardClass(5, 5);
+    const boardObject = new BoardClass(10, 10);
 
     const [board, setBoard] = useState<NodeInterface[][]>([]);
 
