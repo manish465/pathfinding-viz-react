@@ -1,9 +1,12 @@
-import "./styles/main.scss";
+import Board from "./components/Board";
+import "./styles/index.scss";
 
 const App: React.FC = () => {
     return (
         <>
-            <main>Restart</main>
+            <main>
+                <Board />
+            </main>
         </>
     );
 };
