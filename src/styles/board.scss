@@ -6,6 +6,26 @@
             width: 20px;
             height: 20px;
             border: 2px solid brown;
+
+            &.wall {
+                border-color: black;
+                background-color: black;
+            }
+
+            &.start {
+                border-color: green;
+                background-color: green;
+            }
+
+            &.finish {
+                border-color: red;
+                background-color: red;
+            }
+
+            &.node-shortest-path {
+                border-color: blue;
+                background-color: blue;
+            }
         }
     }
 }

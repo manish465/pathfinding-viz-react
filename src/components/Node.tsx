@@ -6,18 +6,22 @@ const Node: React.FC<BoardNodeComponet> = ({
     isStart,
     isFinish,
     isWall,
-    mouseIsPressed,
+    handleMouseEnter,
 }) => {
     const extraClassName = isFinish
-        ? "node-finish"
+        ? "finish"
         : isStart
-        ? "node-start"
+        ? "start"
         : isWall
-        ? "node-wall"
+        ? "wall"
         : "";
 
     return (
-        <div id={`node-${row}-${col}`} className={`node ${extraClassName}`} />
+        <div
+            id={`node-${row}-${col}`}
+            className={`node ${extraClassName}`}
+            onMouseEnter={() => handleMouseEnter(row, col)}
+        />
     );
 };
 
