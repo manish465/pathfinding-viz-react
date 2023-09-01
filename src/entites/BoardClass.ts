@@ -9,9 +9,9 @@ export class BoardClass {
     private nodeFinishRow: number = 9;
     private nodeFinishCol: number = 9;
 
-    public constructor(width: number, height: number) {
-        this.width = width;
-        this.height = height;
+    public constructor(width?: number, height?: number) {
+        this.width = width ? width : Math.floor(window.innerWidth / 25);
+        this.height = height ? height : Math.floor(window.innerHeight / 25);
     }
 
     private generateNodeData = (row: number, col: number): NodeInterface => {
