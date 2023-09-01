@@ -3,11 +3,9 @@ import "./styles/index.scss";
 
 const App: React.FC = () => {
     return (
-        <>
-            <main>
-                <Board />
-            </main>
-        </>
+        <main>
+            <Board />
+        </main>
     );
 };
 

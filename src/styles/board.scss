@@ -4,19 +4,18 @@
         .node {
             width: 20px;
             height: 20px;
-            border: 2px solid saddlebrown;
-            margin: 2px;
+            border: 0.5px solid #d8e2dc;
 
             &.searched {
-                background-color: rgba(196, 196, 196, 0.7);
+                background-color: #adc178;
             }
 
             &.start {
-                background-color: wheat;
+                background-color: #ff006e;
             }
 
             &.finish {
-                background-color: aqua;
+                background-color: #118ab2;
             }
         }
     }

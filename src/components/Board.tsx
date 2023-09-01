@@ -1,34 +1,15 @@
-import { useEffect, useState } from "react";
-import { NodeInterface, PosInterface } from "../utils/specs";
-import { BoardClass } from "../entites/BoardClass";
+import { useState } from "react";
 import Node from "./Node";
+import { BoardClass } from "../entites/BoardClass";
+import { NodeInterface } from "../utils/specs";
 
 const Board = () => {
-    const boardObject = new BoardClass(10, 10);
-
-    const [board, setBoard] = useState<NodeInterface[][]>([]);
-
-    const handleBoardChangeAction = ({ row, col }: PosInterface): void => {
-        const nodeElement: HTMLElement | null = document.getElementById(
-            `node-${row}-${col}`
-        );
-
-        if (nodeElement !== null) nodeElement.classList.add("searched");
-    };
-
-    useEffect(() => {
-        setBoard(boardObject.getBoard());
-    }, []);
+    const boardObj = new BoardClass(20, 20);
+    const [board, setBoard] = useState<NodeInterface[][]>(boardObj.getBoard());
 
     return (
-        <section className="board">
-            <button
-                onClick={() =>
-                    boardObject.search(board, handleBoardChangeAction)
-                }
-            >
-                Search
-            </button>
+        <section className="board" onClick={() => boardObj.search(board)}>
+            <button>Search</button>
             {board.map((row, rowIdx) => (
                 <div className="row" key={rowIdx}>
                     {row.map((node, colIdx) => (

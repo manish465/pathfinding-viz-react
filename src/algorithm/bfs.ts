@@ -1,36 +1,34 @@
-import { sleep } from "../utils/regular";
-import { NodeInterface, PosInterface } from "../utils/specs";
+import { NodeInterface } from "../utils/specs";
 
-export const bfs = async (
+export const bfs = (
     grid: NodeInterface[][],
     start: NodeInterface,
-    finish: NodeInterface,
-    action: (pos: PosInterface) => void
-): Promise<boolean> => {
+    end: NodeInterface
+): NodeInterface[] | null => {
+    const timeline: NodeInterface[] = [];
+
     const queue: NodeInterface[] = [];
     queue.push(start);
 
     while (queue.length > 0) {
-        await sleep(20).then(() => {
-            const current = queue.shift();
-            if (current === undefined) return false;
+        const current = queue.shift();
+        if (current === undefined) return null;
 
-            current.attr.isSearched = true;
-            action(current.pos);
+        current.attr.isSearched = true;
+        timeline.push(current);
 
-            if (current === finish) {
-                return true;
-            }
+        if (current === end) {
+            return timeline;
+        }
 
-            const neighbors = getUnvisitedNeighbors(current, grid);
+        const neighbors = getUnvisitedNeighbors(current, grid);
 
-            for (const neighbor of neighbors) {
-                queue.push(neighbor);
-            }
-        });
+        for (const neighbor of neighbors) {
+            queue.push(neighbor);
+        }
     }
 
-    return false;
+    return null;
 };
 
 const getUnvisitedNeighbors = (
